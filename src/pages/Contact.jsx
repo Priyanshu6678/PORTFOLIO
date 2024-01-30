@@ -1,5 +1,22 @@
 import React, { useState } from "react";
-import Help from "../assets/Help.svg"; 
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, push, set } from "firebase/database";
+import Help from "../assets/Help.svg";
+import { Toast } from 'flowbite-react';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBo1-eI6SC4OTaSX_FwBy4g624P_itr8EA",
+  authDomain: "priyanshu-portfolio-412614.firebaseapp.com",
+  projectId: "priyanshu-portfolio-412614",
+  databaseURL: "https://priyanshu-portfolio-412614-default-rtdb.asia-southeast1.firebasedatabase.app",
+  storageBucket: "priyanshu-portfolio-412614.appspot.com",
+  messagingSenderId: "227605759311",
+  appId: "1:227605759311:web:6a33b80670f25f95f9313a",
+  measurementId: "G-T5NW0JBYPM"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getDatabase(firebaseApp);
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +24,7 @@ const ContactPage = () => {
     subject: "",
     message: "",
   });
+  const [showToast, setShowToast] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,10 +36,33 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // You can replace this with your form submission logic
+    const newMessageRef = push(ref(db, 'messages'));
+    set(newMessageRef, formData)
+      .then(() => {
+        console.log("Message submitted successfully:", formData);
+        setFormData({
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setShowToast(true); // Show toast on successful submission
+      })
+      .catch((error) => {
+        console.error("Error submitting message:", error);
+      });
   };
 
   return (
+    <>
+     {showToast && (
+        <Toast
+          duration={3000} // Set the duration of the toast
+          onDismiss={() => setShowToast(false)} // Dismiss the toast when clicked
+          className="bg-green-500 text-white" // Customize toast style
+        >
+          Message submitted successfully!
+        </Toast>
+      )}
     <section className="min-h-screen flex flex-col lg:flex lg:flex-row justify-center items-center bg-gray-100">
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md lg:max-w-none lg:flex-grow">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
@@ -78,7 +119,9 @@ const ContactPage = () => {
       <div className="flex justify-center lg:justify-end lg:flex-shrink-0">
         <img src={Help} alt="Help" className="max-w-sm w-full h-auto lg:max-w-lg lg:w-auto" />
       </div>
+     
     </section>
+    </>
   );
 };
 

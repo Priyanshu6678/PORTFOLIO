@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './App.css';
-
+import NotFoundPage from './pages/NotFoundPage';
 export default function App() {
  return(
  <BrowserRouter>
@@ -15,6 +15,7 @@ export default function App() {
  <Route path="/" element={<Home/>}/>
   <Route path="/About" element={<About/>}/>
   <Route path="/Contact" element={<Contact/>}/>
+  <Route path="*" element={<NotFoundPage />} />
  </Routes>
   <Footer/>
   

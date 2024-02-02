@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, set } from "firebase/database";
 import Help from "../assets/Help.svg";
 import { Toast } from 'flowbite-react';
+import { FaTelegramPlane } from 'react-icons/fa';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBo1-eI6SC4OTaSX_FwBy4g624P_itr8EA",
@@ -26,6 +27,15 @@ const ContactPage = () => {
   });
   const [showToast, setShowToast] = useState(false);
 
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 3000); 
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -45,7 +55,7 @@ const ContactPage = () => {
           subject: "",
           message: "",
         });
-        setShowToast(true); // Show toast on successful submission
+        setShowToast(true);
       })
       .catch((error) => {
         console.error("Error submitting message:", error);
@@ -54,16 +64,19 @@ const ContactPage = () => {
 
   return (
     <>
-     {showToast && (
-        <Toast
-          duration={3000} // Set the duration of the toast
-          onDismiss={() => setShowToast(false)} // Dismiss the toast when clicked
-          className="bg-green-500 text-white" // Customize toast style
-        >
-          Message submitted successfully!
-        </Toast>
-      )}
-    <section className="min-h-screen flex flex-col lg:flex lg:flex-row justify-center items-center bg-gray-100">
+{showToast && (
+  <div className="fixed bottom-4 right-4 z-50">
+    <Toast
+      onDismiss={() => setShowToast(false)}
+      className="bg-blue-600 dark:bg-blue-600 rounded-none"
+    >
+      <FaTelegramPlane className="h-5 w-5 text-white dark:text-white" />
+      <div className="pl-4 text-sm font-normal text-white">Message sent</div>
+    </Toast>
+  </div>
+)}
+
+    <section className="min-h-screen flex flex-col lg:flex lg:flex-row justify-center items-center bg-white dark:bg-gray-800">
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md lg:max-w-none lg:flex-grow">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
         <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Want any technical help?<br/> Want to send feedback about us? Give us suggestions.</p>

@@ -4,9 +4,11 @@
 @tailwind utilities;
 
 
-h1,input,h2,textarea,button{
+h1,input,h2,textarea,button,#writetous,#timelinetitle,a{
  font-family: 'Rubik', sans-serif;
 }
-nav,p,ul,label,#resumeBtn,#hire{
+nav,p,ul,label,#resumeBtn,#hire,#timelineTime,#timelinebody{
  font-family: 'Poppins', sans-serif;
 }
+
+

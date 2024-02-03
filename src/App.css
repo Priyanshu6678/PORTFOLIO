@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-h1,input,h2,textarea,button,#writetous,#timelinetitle,a{
+h1,input,h2,textarea,#writetous,#timelinetitle{
  font-family: 'Rubik', sans-serif;
 }
-nav,p,ul,label,#resumeBtn,#hire,#timelineTime,#timelinebody{
+
+nav,p,ul,label,#resumeBtn,#hire,#timelineTime,#timelinebody,li{
  font-family: 'Poppins', sans-serif;
 }
 

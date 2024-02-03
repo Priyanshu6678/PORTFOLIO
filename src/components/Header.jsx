@@ -52,7 +52,7 @@ export default function Header({isActive}) {
         
         </nav>
 
-       <nav className="hidden font-bold lg:flex justify-center items-center space-x-4 md:flex justify-center items-center space-x-4">
+       <nav className="hidden lg:flex justify-center items-center space-x-4 md:flex justify-center items-center space-x-4">
         <ul className="lg:flex justify-center items-center md:flex justify-center items-center space-x-4">
             <li className='hover:underline'><NavLink to="/" >Home</NavLink></li>
         <li className='hover:underline'><NavLink to="/About" >About</NavLink></li>

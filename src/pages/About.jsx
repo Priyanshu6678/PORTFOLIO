@@ -24,7 +24,7 @@ const AboutUs = () => {
           </div>
           <div className="lg:w-1/2 mt-8 lg:mt-0">
             <p className="text-lg mb-4">
-              Hey! I'm a skilled web developer with experience in multiple frameworks. I create awesome websites that look great and work even better. Let's work together and make something amazing!
+              Hey there! I'm Priyanshu Dey, a highly skilled web developer with a passion for crafting exceptional online experiences. With a diverse background in various frameworks including [list frameworks], I bring a wealth of expertise to every project I undertake. My goal is simple: to create websites that not only look stunning but also deliver seamless functionality and exceptional user experience. Whether you're looking to launch a brand new site, revamp an existing one, or tackle a challenging web development project, I'm here to turn your vision into reality. Let's collaborate and build something truly remarkable together!
             </p>
            <div className="space-x-4 w-max flex items-center">
 <button id="hire" className='bg-slate-950 text-white pl-4 pr-4 pt-2 pb-2 flex items-center space-x-2 rounded'><p><a href="/Contact">Hire Me </a></p><FaExternalLinkAlt /></button>

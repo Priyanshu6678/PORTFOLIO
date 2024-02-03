@@ -5,14 +5,14 @@ import { Toast } from 'flowbite-react';
 import { FaTelegramPlane } from 'react-icons/fa';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBo1-eI6SC4OTaSX_FwBy4g624P_itr8EA",
-  authDomain: "priyanshu-portfolio-412614.firebaseapp.com",
-  projectId: "priyanshu-portfolio-412614",
-  databaseURL: "https://priyanshu-portfolio-412614-default-rtdb.asia-southeast1.firebasedatabase.app",
-  storageBucket: "priyanshu-portfolio-412614.appspot.com",
-  messagingSenderId: "227605759311",
-  appId: "1:227605759311:web:6a33b80670f25f95f9313a",
-  measurementId: "G-T5NW0JBYPM"
+  apiKey: "AIzaSyABVwJd63PmbVt_r2PP9T-1lfZ69ulHgC4",
+  authDomain: "priyanshu-portfolio-a96ba.firebaseapp.com",
+  databaseURL: "https://priyanshu-portfolio-a96ba-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "priyanshu-portfolio-a96ba",
+  storageBucket: "priyanshu-portfolio-a96ba.appspot.com",
+  messagingSenderId: "1095137333611",
+  appId: "1:1095137333611:web:644499a062739d224a7c2e",
+  measurementId: "G-5BWZN06HQJ"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -62,7 +62,7 @@ export default function WriteToUs() {
         <div className="flex justify-center items-center w-screen">
           <input
             type="text"
-            className="p-2 w-7/12 outline-none"
+            className="p-2 w-7/12 outline-none border-none"
             placeholder="Name"
             value={name}
             onChange={handleInputChange}
